@@ -1,6 +1,6 @@
-FROM python:3
+FROM python:3.10
 
-# Install necessary packages globally
+# Install necessary packages
 RUN apt-get update && apt-get install -y python3-venv python3-distutils python3-apt
 
 # Set the working directory
@@ -9,7 +9,7 @@ WORKDIR /data
 # Create a virtual environment
 RUN python3 -m venv venv
 
-# Activate the virtual environment and ensure `distutils` is installed
+# Activate the virtual environment and upgrade pip/setuptools
 RUN . /data/venv/bin/activate && pip install --upgrade pip setuptools
 
 # Add the virtual environment to PATH
